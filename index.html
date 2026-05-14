@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="TiendaApp">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAD8ElEQVR4nO3dPW4TUQCF0TECiinoIiq2wQrIrhAVi0gDygqo6LIAFpMudaJQWXJhIjLzfn3P6R2NkvvNs+NEPqzr+rxAqDe9LwB6EgDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDR3va+gJLu7z70voQYV9cPvS+hiMOs/w9g7OOZMYqpAjD6ecwSwxQBGP68Rg9h6AAM/3KMGsKQARj+5RothKECMPwco4QwzPsAxp9llJ939xNglG8E/fQ8DbqeAMbPsvTdQbcAjJ9TvfbQJQDj55weu2gegPHzktb7aBqA8fM/Wu6kWQDGz2u02kuTAIyfLVrspnoAxs8etfdTNQDjp4SaOxrmTyGgh2oBuPtTUq09VQnA+Kmhxq48BSJa8QDc/amp9L6cAEQrGoC7Py2U3JkTgGjFAnD3p6VSe3MCEK1IAO7+9FBid04AogmAaLsD8PSHnvbuzwlANAEQTQBEEwDRdgXgBTAj2LNDJwDRBEA0ARDtoj4n+CU3v56W7z8fe1/GFP78eL98+njofRlNOAGIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoh3Vdn7c+2P8En/f15nG5/f1U9Gvefnu3fPnsfvUvV9cPmx7nO0o0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEO67o+b33w/d2HktcCm11dP2x6nBOAaAIgmgCIJgCiCYBouwLY+sobStqzQycA0QRANAEQTQBE2x2AF8L0tHd/TgCiCYBoRQLwNIgeSuzOCUC0YgE4BWip1N6cAEQrGoBTgBZK7swJQLTiATgFqKn0vpwARKsSgFOAGmrsqtoJIAJKqrUnT4GIVjUApwAl1NxR9RNABOxRez9NngKJgC1a7KbZawAR8Bqt9tL0RbAI+B8td9L8t0Ai4CWt99Hl16Ai4Jweu+j2PoAIONVrD13fCBMBy9J3B7s+IaYknzaTZ4Qb4DB/CjHCN4N2Rvl5D3MCnHIaXK5Rhn80ZABHQrgcow3/aOgAjoQwr1GHfzRFAEdCmMfowz+aKoBTYhjPLKM/NW0A54iinRnHfs5FBQCvNcz7ANCDAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiDaX/jzwH2ad6boAAAAAElFTkSuQmCC">
+<link rel="manifest" href="data:application/manifest+json,%7B%22name%22%3A%20%22TiendaApp%20%5Cu2014%20Control%20de%20Ventas%22%2C%20%22short_name%22%3A%20%22TiendaApp%22%2C%20%22description%22%3A%20%22Control%20de%20ventas%20por%20cajera%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%230a0a0a%22%2C%20%22theme_color%22%3A%20%22%230a0a0a%22%2C%20%22orientation%22%3A%20%22portrait%22%2C%20%22icons%22%3A%20%5B%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAD8ElEQVR4nO3dPW4TUQCF0TECiinoIiq2wQrIrhAVi0gDygqo6LIAFpMudaJQWXJhIjLzfn3P6R2NkvvNs%2BNEPqzr%2BrxAqDe9LwB6EgDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDR3va%2BgJLu7z70voQYV9cPvS%2BhiMOs/w9g7OOZMYqpAjD6ecwSwxQBGP68Rg9h6AAM/3KMGsKQARj%2B5RothKECMPwco4QwzPsAxp9llJ939xNglG8E/fQ8DbqeAMbPsvTdQbcAjJ9TvfbQJQDj55weu2gegPHzktb7aBqA8fM/Wu6kWQDGz2u02kuTAIyfLVrspnoAxs8etfdTNQDjp4SaOxrmTyGgh2oBuPtTUq09VQnA%2BKmhxq48BSJa8QDc/amp9L6cAEQrGoC7Py2U3JkTgGjFAnD3p6VSe3MCEK1IAO7%2B9FBid04AogmAaLsD8PSHnvbuzwlANAEQTQBEEwDRdgXgBTAj2LNDJwDRBEA0ARDtoj4n%2BCU3v56W7z8fe1/GFP78eL98%2BnjofRlNOAGIJgCiCYBoAiCaAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoh3Vdn7c%2B2P8En/f15nG5/f1U9Gvefnu3fPnsfvUvV9cPmx7nO0o0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEEQDQBEE0ARBMA0QRANAEQTQBEEwDRBEA0ARBNAEQTANEO67o%2Bb33w/d2HktcCm11dP2x6nBOAaAIgmgCIJgCiCYBouwLY%2BsobStqzQycA0QRANAEQTQBE2x2AF8L0tHd/TgCiCYBoRQLwNIgeSuzOCUC0YgE4BWip1N6cAEQrGoBTgBZK7swJQLTiATgFqKn0vpwARKsSgFOAGmrsqtoJIAJKqrUnT4GIVjUApwAl1NxR9RNABOxRez9NngKJgC1a7KbZawAR8Bqt9tL0RbAI%2BB8td9L8t0Ai4CWt99Hl16Ai4Jweu%2Bj2PoAIONVrD13fCBMBy9J3B7s%2BIaYknzaTZ4Qb4DB/CjHCN4N2Rvl5D3MCnHIaXK5Rhn80ZABHQrgcow3/aOgAjoQwr1GHfzRFAEdCmMfowz%2BaKoBTYhjPLKM/NW0A54iinRnHfs5FBQCvNcz7ANCDAIgmAKIJgGgCIJoAiCYAogmAaAIgmgCIJgCiCYBoAiDaX/jzwH2ad6boAAAAAElFTkSuQmCC%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%7D%2C%20%7B%22src%22%3A%20%22data%3Aimage/png%3Bbase64%2CiVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAAMjklEQVR4nO3bO64daRWA0WPLTXADZz0GYuKOO2IcDIKYmAG0EGMgIOyYgRAROHOIaJnAiOu27%2BO8q/b/rTWCks723p%2Br7DcPDw%2BfDgBAytutHwAAuD8BAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACDo3dYPwEwffn6/9SMAX/j%2Bx49bPwLDvHl4ePi09UOwPw48rEUg8DUBgGMPUaKgTQAEOfjAUwRBiwAIcPCBcwiCtQmARTn6wDWJgfUIgIU4%2BsA9iIE1CIDhHH1gS2JgLgEwlMMP7IkQmEcADOLoAxOIgRkEwAAOPzCRENg3AbBjDj%2BwAiGwTwJghxx%2BYEVCYF8EwI44/ECBENgHAbADDj9QJAS29XbrB6hz/IEq%2B29b3gBsxOADPPI24P4EwJ05/ADPEwL34xPAHTn%2BAC%2BzJ%2B/HG4A7MNAAp/M24La8Abgxxx/gPPbnbQmAGzK8AJexR2/HJ4AbMLAA1%2BeTwHV5A3Bljj/Abdiv1yUArshwAtyWPXs9PgFcgYEEuD%2BfBC7jDcCFHH%2BAbdi/lxEAFzB8ANuyh88nAM5k6AD2wT4%2BjwA4g2ED2Bd7%2BXQC4ESGDGCf7OfTCIATGC6AfbOnjycAjmSoAGawr48jAI5gmABmsbdfJwBeYYgAZrK/XyYAXmB4AGazx58nAJ5haADWYJ8/TQA8wbAArMVe/5YA%2BIohAViT/f5rAuALhgNgbfb8IwHwP4YCoMG%2B/0wAHAwDQI29LwAAICkfACoQoKm%2B/9MBUP/xAerKdyAbAOUfHYBH1XuQDQAAKEsGQLX2AHha8S7kAqD4IwPwutp9SAVA7ccF4DSlO5EKAADgs0wAlKoOgPNV7kUiACo/JgDXUbgbiQAAAH5t%2BQAoVBwA17f6/Vg%2BAACAby0dAKvXGwC3tfIdWTYAVv7RALifVe/JsgEAADxvyQBYtdYA2MaKd2XJAAAAXrZcAKxYaQBsb7X7slwAAACvWyoAVqszAPZlpTuzVAAAAMdZJgBWqjIA9muVe7NMAAAAx1siAFapMQBmWOHuLBEAAMBpBAAABI0PgBVewwAwz/T7Mz4AAIDTjQ6A6fUFwGyT79DoAAAAziMAACBobABMfu0CwDqm3qOxAQAAnE8AAEDQyACY%2BroFgDVNvEsjAwAAuIwAAICgcQEw8TULAOubdp/GBQAAcDkBAABBAgAAgkYFwLTvKwC0TLpTowIAALgOAQAAQQIAAILGBMCk7yoAdE25V2MCAAC4HgEAAEECAACCBAAABI0IgCn/oAIADocZd2tEAAAA1yUAACBIAABAkAAAgCABAABBAgAAggQAAATtPgAm/F9KAPja3u/X7gMAALg%2BAQAAQQIAAIIEAAAECQAACHq39QPQ8qe//ufw099%2B2foxYHd%2B%2BuN3h9//4O9k3I9pA4AgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAIAgAQAAQQIAAIIEAAAECQAACBIAABAkAAAgSAAAQJAAAICgNw8PD5%2B2foiXfPj5/daPAHfzwx/%2Bffjnv3b9R/Jsv/vt28Pf//zd1o8Bd/X9jx%2B3foRneQMAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQJAAAIEgAAECQAACAIAEAAEECAACCBAAABAkAAAgSAAAQ9G7rBwAe/eMvv9n6EYAIbwAAIEgAAECQAACAIAEAAEECAACCBAAABO0%2BAL7/8ePWjwAAJ9v7/dp9AAAA1ycAACBIAABAkAAAgCABAABBAgAAggQAAASNCIC9/19KAPjShLs1IgAAgOsSAAAQJAAAIEgAAEDQmACY8A8qAGDKvRoTAADA9QgAAAgSAAAQNCoApnxXAaBp0p0aFQAAwHUIAAAIEgAAEDQuACZ9XwGgY9p9GhcAAMDlBAAABI0MgGmvWQBY28S7NDIAAIDLCAAACBobABNftwCwnqn3aGwAAADnEwAAEDQ6AKa%2BdgFgDZPv0OgAAADOMz4AJtcXAHNNvz/jAwAAOJ0AAICgJQJg%2BmsYAGZZ4e4sEQAAwGmWCYAVagyA/Vvl3iwTAADA8ZYKgFWqDIB9WunOLBUAAMBxlguAleoMgP1Y7b4sFwAAwOuWDIDVKg2Aba14V5YMAADgZcsGwIq1BsD9rXpPlg2Aw2HdHw2A%2B1j5jiwdAADA05YPgJXrDYDbWf1%2BLB8AAMC3EgGwesUBcF2Fu5EIgMOh8WMCcLnKvcgEAADwKBUAlaoD4DylO5EKgMOh9eMCcLzafcgFwOHQ%2B5EBeFnxLiQDAADqsgFQrD0AvlW9B9kAOBy6PzoAn5XvQDoADof2jw9QVt//%2BQAAgCIBcFCBADX2vgD4P8MA0GDffyYAvmAoANZmzz8SAF8xHABrst9/TQA8wZAArMVe/5YAeIZhAViDff40AfACQwMwmz3%2BPAHwCsMDMJP9/TIBcARDBDCLvf06AXAkwwQwg319HAFwAkMFsG/29PEEwIkMF8A%2B2c%2BnEQBnMGQA%2B2Ivn04AnMmwAeyDfXweAXABQwewLXv4fALgQoYPYBv272XePDw8fNr6IVbx4ef3Wz8CwPIc/uvwBuCKDCXAbdmz1yMArsxwAtyG/XpdPgHckE8CAJdz%2BG/DG4AbMrQAl7FHb0cA3JjhBTiP/XlbPgHckU8CAK9z%2BO/DG4A7MtQAL7Mn78cbgI14GwDwyOG/PwGwMSEAlDn82/EJYGOGH6iy/7blDcCOeBsAFDj8%2ByAAdkgIACty%2BPdFAOyYEABW4PDvkwAYQAgAEzn8%2ByYABhECwAQO/wwCYCgxAOyJoz%2BPABhOCABbcvjnEgALEQPAPTj6axAAixIDwDU5%2BusRAAFiADiHo782ARAkCICnOPgtAgBBAFEOfpsA4EmiANbi2PM1AcBZBALsiwPPqQQAAAS93foBAID7EwAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABBAgAAggQAAAQJAAAIEgAAECQAACBIAABAkAAAgCABAABB/wXQtND427YtVgAAAABJRU5ErkJggg%3D%3D%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image/png%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%7D%5D%7D">
+<title>TiendaApp — Control de Ventas</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0a0a0a; --s1:#141414; --s2:#1c1c1c; --s3:#242424; --border:#2a2a2a;
+  --gold:#f5c518; --red:#ff4d4d; --green:#3ecf6e; --blue:#4d9fff;
+  --text:#f2efe9; --muted:#666; --muted2:#888; --r:12px; --r-sm:8px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+
+/* LOGIN */
+#loginScreen{position:fixed;inset:0;z-index:999;background:var(--bg);display:flex;align-items:center;justify-content:center;padding:24px}
+.login-wrap{width:100%;max-width:360px;animation:slideUp .4s ease both}
+.login-logo{font-family:'Bebas Neue',sans-serif;font-size:3rem;letter-spacing:.06em;color:var(--gold);line-height:1;margin-bottom:4px}
+.login-sub{font-size:.8rem;color:var(--muted);margin-bottom:36px}
+.role-tabs{display:flex;gap:6px;margin-bottom:20px}
+.role-tab{flex:1;padding:10px;border-radius:var(--r-sm);background:var(--s2);border:1px solid var(--border);color:var(--muted);font-family:'Outfit',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;transition:all .2s}
+.role-tab.active{background:var(--gold);color:#111;border-color:var(--gold)}
+.lf label{display:block;font-size:.75rem;color:var(--muted);margin-bottom:6px}
+.lf input{width:100%;background:var(--s2);border:1px solid var(--border);color:var(--text);font-family:'Outfit',sans-serif;font-size:1rem;padding:12px 16px;border-radius:var(--r-sm);outline:none;letter-spacing:.15em;transition:border-color .2s;margin-bottom:14px}
+.lf input:focus{border-color:var(--gold)}
+.login-err{color:var(--red);font-size:.78rem;min-height:20px;margin-bottom:8px}
+.btn-login{width:100%;padding:14px;background:var(--gold);color:#111;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:.1em;border:none;border-radius:var(--r-sm);cursor:pointer;transition:all .15s}
+.btn-login:active{transform:scale(.98)}
+
+/* APP */
+#app{display:none;flex-direction:column;min-height:100vh}
+#app.show{display:flex}
+
+/* TOPBAR */
+.topbar{background:var(--s1);border-bottom:1px solid var(--border);padding:12px 16px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.topbar-logo{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:.08em;color:var(--gold)}
+.topbar-right{display:flex;align-items:center;gap:8px}
+.role-pill{font-size:.68rem;font-weight:600;padding:4px 10px;border-radius:20px;letter-spacing:.05em}
+.role-pill.admin{background:#2a1f00;color:var(--gold);border:1px solid #3d2e00}
+.role-pill.super{background:#001f2a;color:var(--blue);border:1px solid #002e3d}
+.topbar-date{font-size:.72rem;color:var(--muted)}
+.btn-icon{background:var(--s2);border:1px solid var(--border);color:var(--muted2);width:32px;height:32px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:.95rem;transition:all .2s}
+.btn-icon:hover{color:var(--gold);border-color:var(--gold)}
+
+/* BOTTOM NAV */
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--s1);border-top:1px solid var(--border);display:flex;z-index:50;padding-bottom:env(safe-area-inset-bottom)}
+.nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;padding:10px 4px 8px;cursor:pointer;color:var(--muted);font-size:.62rem;font-weight:600;letter-spacing:.04em;transition:color .2s;gap:4px;background:none;border:none}
+.nav-btn .ni{font-size:1.2rem;transition:transform .2s}
+.nav-btn.active{color:var(--gold)}
+.nav-btn.active .ni{transform:translateY(-2px)}
+
+/* PAGES */
+.pages{flex:1;padding:16px 16px 80px;overflow-y:auto}
+.page{display:none;animation:slideUp .25s ease both}
+.page.active{display:block}
+@keyframes slideUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* CARDS */
+.card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:14px}
+.card-title{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.1em;color:var(--muted2);margin-bottom:12px}
+
+/* INPUTS */
+input[type=text],input[type=password],input[type=number],input[type=date],select{width:100%;background:var(--s2);border:1px solid var(--border);color:var(--text);font-family:'Outfit',sans-serif;font-size:.88rem;padding:10px 13px;border-radius:var(--r-sm);outline:none;transition:border-color .2s;margin-bottom:0}
+input:focus,select:focus{border-color:var(--gold)}
+select option{background:var(--s2)}
+.field{margin-bottom:12px}
+.field label{display:block;font-size:.73rem;color:var(--muted);margin-bottom:5px}
+
+/* BUTTONS */
+.btn{font-family:'Outfit',sans-serif;font-weight:600;font-size:.82rem;padding:10px 20px;border-radius:var(--r-sm);border:none;cursor:pointer;letter-spacing:.03em;transition:all .15s;display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:var(--gold);color:#111}
+.btn-gold:hover{background:#ffd02a}
+.btn-outline{background:transparent;border:1px solid var(--border);color:var(--muted2)}
+.btn-outline:hover{border-color:var(--muted2);color:var(--text)}
+.btn-red{background:transparent;border:1px solid var(--red);color:var(--red)}
+.btn-red:hover{background:var(--red);color:#fff}
+.btn-green{background:var(--green);color:#fff}
+.btn-full{width:100%}
+.btn-sm{padding:5px 11px;font-size:.72rem}
+
+/* CAJERAS */
+.cajeras-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.cj-tile{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:14px 10px;cursor:pointer;text-align:center;transition:all .18s;user-select:none}
+.cj-tile:active{transform:scale(.95)}
+.cj-tile.sel{border-color:var(--gold);background:#1c1700;box-shadow:0 0 0 2px var(--gold)}
+.cj-emoji{font-size:1.8rem;margin-bottom:6px;display:block}
+.cj-name{font-weight:600;font-size:.83rem}
+
+/* PIEZAS */
+.piezas-box{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin-top:14px}
+.piezas-caj{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);margin-bottom:2px}
+.piezas-hint{font-size:.73rem;color:var(--muted);margin-bottom:14px}
+.pz-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.pz-num{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#111;font-size:.7rem;font-weight:700;flex-shrink:0}
+.pz-info{flex:1}
+.pz-label{font-size:.75rem;color:var(--muted2);margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pz-info input{margin:0}
+.btn-row{display:flex;gap:8px;margin-top:14px}
+
+/* RANKING */
+.rank-tabs{display:flex;gap:6px;margin-bottom:14px}
+.rank-tab{flex:1;padding:9px;border-radius:var(--r-sm);background:var(--s2);border:1px solid var(--border);color:var(--muted);font-weight:600;font-size:.78rem;cursor:pointer;transition:all .2s;text-align:center}
+.rank-tab.active{background:var(--gold);color:#111;border-color:var(--gold)}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.stat-card{background:var(--s1);border:1px solid var(--border);border-radius:var(--r);padding:14px}
+.stat-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--gold)}
+.stat-lbl{font-size:.7rem;color:var(--muted)}
+.rank-item{background:var(--s2);border:1px solid var(--border);border-radius:var(--r);padding:14px;margin-bottom:8px;display:flex;align-items:center;gap:12px;animation:slideUp .3s ease both}
+.rank-item:nth-child(1){border-color:var(--gold);background:#1c1700}
+.rank-item:nth-child(2){border-color:#777;background:#181818}
+.rank-item:nth-child(3){border-color:#7c4f1e;background:#160f08}
+.rank-pos{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;width:34px;text-align:center;flex-shrink:0}
+.rank-item:nth-child(1) .rank-pos{color:var(--gold)}
+.rank-item:nth-child(2) .rank-pos{color:#aaa}
+.rank-item:nth-child(3) .rank-pos{color:#c07840}
+.rank-item:nth-child(n+4) .rank-pos{color:var(--muted)}
+.rank-info{flex:1}
+.rank-name{font-weight:700;font-size:.93rem}
+.rank-sub{font-size:.7rem;color:var(--muted);margin-top:2px}
+.bar-wrap{height:3px;background:var(--border);border-radius:2px;margin-top:6px;overflow:hidden}
+.bar-fill{height:100%;background:var(--gold);border-radius:2px;transition:width .6s ease}
+.rank-piezas{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--gold);text-align:right}
+.rank-piezas small{display:block;font-family:'Outfit',sans-serif;font-size:.62rem;color:var(--muted);font-weight:400}
+
+/* HISTORIAL */
+.hist-item{background:var(--s2);border:1px solid var(--border);border-radius:var(--r-sm);padding:12px 14px;margin-bottom:8px}
+.hist-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.hist-caj{font-weight:700;font-size:.9rem}
+.hist-piezas{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:var(--gold)}
+.hist-arts{font-size:.72rem;color:var(--muted2)}
+.hist-bot{display:flex;justify-content:space-between;align-items:center;margin-top:6px}
+.hist-date{font-size:.7rem;color:var(--muted)}
+.month-hdr{font-family:'Bebas Neue',sans-serif;letter-spacing:.1em;color:var(--muted);font-size:.9rem;margin:14px 0 6px}
+
+/* ADMIN MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:200;display:none;align-items:flex-end;justify-content:center}
+.modal-bg.show{display:flex}
+.modal{background:var(--s1);border:1px solid var(--border);border-radius:var(--r) var(--r) 0 0;padding:22px 20px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;animation:slideUp .25s ease both}
+.modal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.modal-title{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.08em;color:var(--gold)}
+.modal-close{background:none;border:none;color:var(--muted);font-size:1.3rem;cursor:pointer;padding:4px}
+
+/* TAGS */
+.tag{display:inline-flex;align-items:center;gap:6px;background:#1c1700;border:1px solid #3d3000;color:var(--gold);padding:5px 10px;border-radius:6px;font-size:.75rem;font-weight:600;margin:3px}
+.tag-del{background:none;border:none;color:var(--gold);cursor:pointer;font-size:.95rem;line-height:1;padding:0}
+
+/* MESSAGES */
+.msg{font-size:.78rem;padding:8px 12px;border-radius:var(--r-sm);margin-top:8px}
+.msg-ok{background:#0d2a17;border:1px solid #1d5c30;color:var(--green)}
+.msg-err{background:#2a0d0d;border:1px solid #5c1d1d;color:var(--red)}
+
+hr{border:none;border-top:1px solid var(--border);margin:16px 0}
+.empty{text-align:center;padding:32px;color:var(--muted);font-size:.85rem}
+@media(max-width:380px){.cajeras-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-wrap">
+    <div class="login-logo">TiendaApp</div>
+    <div class="login-sub">Control de ventas por cajera</div>
+    <div class="role-tabs">
+      <button class="role-tab active" onclick="setRole('admin',this)">👑 Administrador</button>
+      <button class="role-tab" onclick="setRole('super',this)">👁 Supervisor</button>
+    </div>
+    <div class="lf">
+      <label>Contraseña</label>
+      <input type="password" id="loginPass" placeholder="••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <div class="login-err" id="loginErr"></div>
+    <button class="btn-login" onclick="doLogin()">ENTRAR</button>
+  </div>
+</div>
+
+<!-- ADMIN MODAL -->
+<div class="modal-bg" id="adminModal">
+  <div class="modal">
+    <div class="modal-head">
+      <span class="modal-title">⚙ Panel Admin</span>
+      <button class="modal-close" onclick="closeAdmin()">✕</button>
+    </div>
+
+    <div class="card-title">Cajeras registradas</div>
+    <div id="adminCajeras" style="margin-bottom:12px"></div>
+
+    <hr>
+    <div class="card-title">Agregar cajera</div>
+    <div style="display:flex;gap:8px;align-items:center">
+      <input type="text" id="newCajInput" placeholder="Nombre" style="flex:1">
+      <button class="btn btn-gold" onclick="addCajera()" style="white-space:nowrap">+ Agregar</button>
+    </div>
+    <div id="addCajMsg"></div>
+
+    <hr>
+    <div class="card-title">Nombres de artículos</div>
+    <div style="font-size:.73rem;color:var(--muted2);margin-bottom:10px">Los supervisores verán estos nombres al capturar, pero no pueden editarlos.</div>
+    <div id="artNombres"></div>
+    <button class="btn btn-gold btn-sm" onclick="saveArts()" style="margin-top:4px">Guardar nombres</button>
+    <div id="artMsg"></div>
+
+    <hr>
+    <div class="card-title">Cambiar contraseña — Admin</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+      <div class="field"><label>Actual</label><input type="password" id="pAdmAct" placeholder="••••••"></div>
+      <div class="field"><label>Nueva</label><input type="password" id="pAdmNew" placeholder="••••••"></div>
+    </div>
+    <button class="btn btn-gold btn-sm" onclick="changePass('admin')">Cambiar admin</button>
+    <div id="msgPAdm"></div>
+
+    <div style="margin-top:14px" class="card-title">Cambiar contraseña — Supervisor</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px">
+      <div class="field"><label>Actual</label><input type="password" id="pSupAct" placeholder="••••••"></div>
+      <div class="field"><label>Nueva</label><input type="password" id="pSupNew" placeholder="••••••"></div>
+    </div>
+    <button class="btn btn-outline btn-sm" onclick="changePass('super')">Cambiar supervisor</button>
+    <div id="msgPSup"></div>
+
+    <hr>
+    <button class="btn btn-red btn-full" onclick="closeAdmin()">Cerrar</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="topbar">
+    <div class="topbar-logo">TiendaApp</div>
+    <div class="topbar-right">
+      <span class="topbar-date" id="topDate"></span>
+      <span class="role-pill" id="rolePill"></span>
+      <button class="btn-icon" id="btnAdmin" onclick="openAdmin()">⚙</button>
+      <button class="btn btn-red btn-sm" onclick="doLogout()" style="padding:5px 12px;font-size:.75rem">⏻ Salir</button>
+    </div>
+  </div>
+
+  <div class="pages">
+
+    <!-- CAPTURA -->
+    <div class="page active" id="pg-captura">
+      <div class="sec-title">Seleccionar cajera</div>
+      <div class="cajeras-grid" id="cajerasGrid"></div>
+      <div class="piezas-box" id="piezasBox" style="display:none">
+        <div class="piezas-caj" id="piezasCaj"></div>
+        <div class="field" style="margin-bottom:12px">
+          <label>Fecha de la venta</label>
+          <input type="date" id="captFecha">
+        </div>
+        <div class="piezas-hint">Ingresa las piezas vendidas</div>
+        <div id="piezasInputs"></div>
+        <div class="btn-row">
+          <button class="btn btn-outline" onclick="limpiar()">Limpiar</button>
+          <button class="btn btn-green" style="flex:1" onclick="guardar()">✓ Guardar venta</button>
+        </div>
+        <div id="captMsg"></div>
+      </div>
+    </div>
+
+    <!-- RANKING -->
+    <div class="page" id="pg-ranking">
+      <div class="rank-tabs">
+        <div class="rank-tab active" onclick="setRankTab('dia',this)">📅 Hoy</div>
+        <div class="rank-tab" onclick="setRankTab('mes',this)">📆 Este mes</div>
+      </div>
+      <div class="field" style="margin-bottom:14px">
+        <label>Ver ranking por</label>
+        <select id="rkProducto" onchange="renderRanking()">
+          <option value="">— Todas las piezas —</option>
+        </select>
+      </div>
+      <div class="stats-row" id="rkStats"></div>
+      <div id="rkList"></div>
+    </div>
+
+    <!-- HISTORIAL (admin only) -->
+    <div class="page" id="pg-historial">
+      <div class="sec-title">Historial</div>
+      <div class="card">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <div class="field"><label>Desde</label><input type="date" id="fDesde"></div>
+          <div class="field"><label>Hasta</label><input type="date" id="fHasta"></div>
+        </div>
+        <div class="field"><label>Cajera</label>
+          <select id="fCajera"><option value="">Todas</option></select>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="renderHist()">Filtrar</button>
+      </div>
+      <div id="histWrap"></div>
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-btn active" onclick="showPage('captura',this)"><span class="ni">📝</span>Captura</button>
+    <button class="nav-btn" onclick="showPage('ranking',this)"><span class="ni">🏆</span>Ranking</button>
+    <button class="nav-btn" id="navHist" onclick="showPage('historial',this)"><span class="ni">🗂</span>Historial</button>
+  </nav>
+</div>
+
+<script>
+// ── STATE ─────────────────────────────────────────────
+const KEY = 'tienda_v3';
+let S = (() => {
+  const d = JSON.parse(localStorage.getItem(KEY) || '{}');
+  if (!d.pw)   d.pw   = { admin:'1234', super:'5678' };
+  if (!d.caj)  d.caj  = [];
+  if (!d.arts) d.arts = Array.from({length:10},(_,i)=>`Artículo ${i+1}`);
+  if (!d.v)    d.v    = [];
+  return d;
+})();
+let role = null, selCaj = null, rankTab = 'dia';
+function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
+
+// ── DATE UTILS ────────────────────────────────────────
+const today = () => new Date().toISOString().split('T')[0];
+const thisMonth = () => today().slice(0,7);
+const fmt = d => { try { const [y,m,dd]=d.split('-'); return `${dd}/${m}/${y}`; } catch(e){ return d; } };
+const fmtM = ym => { try { const [y,m]=ym.split('-'); return ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'][+m-1]+' '+y; } catch(e){ return ym; } };
+
+// ── LOGIN ─────────────────────────────────────────────
+let loginRole = 'admin';
+function setRole(r, btn) {
+  loginRole = r;
+  document.querySelectorAll('.role-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('loginErr').textContent = '';
+  document.getElementById('loginPass').value = '';
+}
+function doLogin() {
+  const p = document.getElementById('loginPass').value;
+  if (p === S.pw[loginRole]) {
+    role = loginRole;
+    document.getElementById('loginScreen').style.display = 'none';
+    initApp();
+  } else {
+    document.getElementById('loginErr').textContent = 'Contraseña incorrecta';
+    document.getElementById('loginPass').value = '';
+  }
+}
+function doLogout() {
+  role = null; selCaj = null;
+  document.getElementById('loginPass').value = '';
+  document.getElementById('loginErr').textContent = '';
+  document.getElementById('loginScreen').style.display = 'flex';
+  document.getElementById('app').classList.remove('show');
+}
+
+// ── INIT ──────────────────────────────────────────────
+function initApp() {
+  document.getElementById('app').classList.add('show');
+  document.getElementById('topDate').textContent = fmt(today());
+  const pill = document.getElementById('rolePill');
+  if (role === 'admin') {
+    pill.textContent = '👑 Admin'; pill.className = 'role-pill admin';
+    document.getElementById('btnAdmin').style.display = 'flex';
+    document.getElementById('navHist').style.display = 'flex';
+  } else {
+    pill.textContent = '👁 Supervisor'; pill.className = 'role-pill super';
+    document.getElementById('btnAdmin').style.display = 'none';
+    document.getElementById('navHist').style.display = 'none';
+  }
+  renderGrid();
+  renderRanking();
+  fillRkProductos();
+  if (role === 'admin') {
+    renderHist();
+    fillFiltros();
+    const d = today();
+    document.getElementById('fDesde').value = d.slice(0,7)+'-01';
+    document.getElementById('fHasta').value = d;
+  }
+  showPage('captura', document.querySelector('.nav-btn'));
+}
+
+// ── PAGES ─────────────────────────────────────────────
+function showPage(name, btn) {
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('pg-'+name).classList.add('active');
+  btn.classList.add('active');
+  if (name==='ranking') renderRanking();
+  if (name==='historial' && role==='admin') renderHist();
+}
+
+// ── CAJERAS GRID ──────────────────────────────────────
+const EMOJIS = ['👩','👩‍💼','🧑‍💼','👩‍🦱','👩‍🦰','👩‍🦳','🧕','👩‍🏫','👱‍♀️','🙍‍♀️'];
+function renderGrid() {
+  const el = document.getElementById('cajerasGrid');
+  if (!S.caj.length) {
+    el.innerHTML = `<div class="empty" style="grid-column:1/-1">Sin cajeras registradas${role==='admin'?'.<br><small>Agrégalas en el panel admin.</small>':'.<br><small>Contacta al administrador.</small>'}`;
+    return;
+  }
+  el.innerHTML = S.caj.map((c,i)=>`
+    <div class="cj-tile ${selCaj===c?'sel':''}" onclick="selectCaj('${c}')">
+      <span class="cj-emoji">${EMOJIS[i%EMOJIS.length]}</span>
+      <div class="cj-name">${c}</div>
+    </div>`).join('');
+}
+function selectCaj(name) {
+  selCaj = name;
+  renderGrid();
+  document.getElementById('piezasCaj').textContent = name;
+  document.getElementById('piezasBox').style.display = 'block';
+  if (!document.getElementById('captFecha').value) {
+    document.getElementById('captFecha').value = today();
+  }
+  buildPiezas();
+  document.getElementById('captMsg').innerHTML = '';
+  setTimeout(()=>document.getElementById('piezasBox').scrollIntoView({behavior:'smooth',block:'nearest'}),100);
+}
+
+// ── PIEZAS ────────────────────────────────────────────
+function buildPiezas() {
+  // Solo muestra artículos que el admin haya nombrado (distintos al nombre genérico base)
+  // Todos los roles ven los nombres; solo admin puede editarlos desde el panel
+  document.getElementById('piezasInputs').innerHTML = S.arts.map((a,i)=>`
+    <div class="pz-row">
+      <span class="pz-num">${i+1}</span>
+      <div class="pz-info">
+        <div class="pz-label">${a}</div>
+        <input type="number" id="pz${i}" placeholder="0" min="0">
+      </div>
+    </div>`).join('');
+}
+function limpiar() { buildPiezas(); document.getElementById('captMsg').innerHTML=''; document.getElementById('captFecha').value=today(); }
+function guardar() {
+  if (!selCaj) return;
+  const items=[]; let total=0;
+  S.arts.forEach((a,i)=>{
+    const v=parseInt(document.getElementById(`pz${i}`).value)||0;
+    if(v>0){items.push({a,p:v});total+=v;}
+  });
+  if (!items.length) { document.getElementById('captMsg').innerHTML='<div class="msg msg-err">Captura al menos una pieza</div>'; return; }
+  const fechaCaptura = document.getElementById('captFecha').value || today();
+  S.v.push({id:Date.now(),f:fechaCaptura,c:selCaj,items,t:total});
+  save(); limpiar();
+  document.getElementById('captMsg').innerHTML=`<div class="msg msg-ok">✓ ${total} piezas guardadas para ${selCaj}</div>`;
+  setTimeout(()=>document.getElementById('captMsg').innerHTML='',3000);
+}
+
+// ── RANKING ───────────────────────────────────────────
+function fillRkProductos() {
+  const sel = document.getElementById('rkProducto');
+  if (!sel) return;
+  const current = sel.value;
+  sel.innerHTML = '<option value="">— Todas las piezas —</option>' +
+    S.arts.map(a => `<option value="${a}"${a===current?' selected':''}>${a}</option>`).join('');
+}
+function setRankTab(t, btn) {
+  rankTab=t;
+  document.querySelectorAll('.rank-tab').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRanking();
+}
+function renderRanking() {
+  const isDay = rankTab==='dia';
+  const artF = document.getElementById('rkProducto')?.value || '';
+  const filt = S.v.filter(v=>isDay ? v.f===today() : v.f.startsWith(thisMonth()));
+  // Stats
+  let totPiezas, cajSet;
+  if (artF) {
+    const artFilt = filt.map(v=>({...v, items: v.items.filter(it=>it.a===artF), t: v.items.filter(it=>it.a===artF).reduce((s,it)=>s+it.p,0)})).filter(v=>v.t>0);
+    totPiezas = artFilt.reduce((s,v)=>s+v.t,0);
+    cajSet = new Set(artFilt.map(v=>v.c));
+    document.getElementById('rkStats').innerHTML=`
+      <div class="stat-card"><div class="stat-num">${totPiezas}</div><div class="stat-lbl">${artF} ${isDay?'hoy':'este mes'}</div></div>
+      <div class="stat-card"><div class="stat-num">${cajSet.size}</div><div class="stat-lbl">Cajeras activas</div></div>`;
+    const byC={};
+    artFilt.forEach(v=>{
+      if(!byC[v.c]) byC[v.c]={p:0,n:0};
+      byC[v.c].p+=v.t; byC[v.c].n++;
+    });
+    const rows=Object.entries(byC).sort((a,b)=>b[1].p-a[1].p);
+    const maxP=rows[0]?.[1].p||1;
+    const medals=['🥇','🥈','🥉'];
+    document.getElementById('rkList').innerHTML = rows.length
+      ? rows.map(([name,d],i)=>`
+        <div class="rank-item">
+          <div class="rank-pos">${medals[i]||i+1}</div>
+          <div class="rank-info">
+            <div class="rank-name">${name}</div>
+            <div class="rank-sub">${d.n} captura${d.n!==1?'s':''}</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:${Math.round(d.p/maxP*100)}%"></div></div>
+          </div>
+          <div class="rank-piezas">${d.p}<small>${artF}</small></div>
+        </div>`).join('')
+      : `<div class="empty">Sin ventas de "${artF}" ${isDay?'hoy':'este mes'}</div>`;
+  } else {
+    totPiezas = filt.reduce((s,v)=>s+v.t,0);
+    cajSet = new Set(filt.map(v=>v.c));
+    document.getElementById('rkStats').innerHTML=`
+      <div class="stat-card"><div class="stat-num">${totPiezas}</div><div class="stat-lbl">Piezas ${isDay?'hoy':'este mes'}</div></div>
+      <div class="stat-card"><div class="stat-num">${cajSet.size}</div><div class="stat-lbl">Cajeras activas</div></div>`;
+    const byC={};
+    filt.forEach(v=>{
+      if(!byC[v.c]) byC[v.c]={p:0,n:0};
+      byC[v.c].p+=v.t; byC[v.c].n++;
+    });
+    const rows=Object.entries(byC).sort((a,b)=>b[1].p-a[1].p);
+    const maxP=rows[0]?.[1].p||1;
+    const medals=['🥇','🥈','🥉'];
+    document.getElementById('rkList').innerHTML = rows.length
+      ? rows.map(([name,d],i)=>`
+        <div class="rank-item">
+          <div class="rank-pos">${medals[i]||i+1}</div>
+          <div class="rank-info">
+            <div class="rank-name">${name}</div>
+            <div class="rank-sub">${d.n} captura${d.n!==1?'s':''}</div>
+            <div class="bar-wrap"><div class="bar-fill" style="width:${Math.round(d.p/maxP*100)}%"></div></div>
+          </div>
+          <div class="rank-piezas">${d.p}<small>piezas</small></div>
+        </div>`).join('')
+      : `<div class="empty">Sin ventas ${isDay?'hoy':'este mes'}</div>`;
+  }
+}
+
+// ── HISTORIAL ─────────────────────────────────────────
+function fillFiltros() {
+  const sel=document.getElementById('fCajera');
+  sel.innerHTML='<option value="">Todas</option>'+S.caj.map(c=>`<option value="${c}">${c}</option>`).join('');
+}
+function renderHist() {
+  const desde=document.getElementById('fDesde').value||'2000-01-01';
+  const hasta=document.getElementById('fHasta').value||'2099-12-31';
+  const cajF=document.getElementById('fCajera').value;
+  const filt=S.v.filter(v=>v.f>=desde&&v.f<=hasta&&(!cajF||v.c===cajF)).sort((a,b)=>b.id-a.id);
+  const wrap=document.getElementById('histWrap');
+  if(!filt.length){wrap.innerHTML='<div class="empty">Sin registros en este rango</div>';return;}
+  const byM={};
+  filt.forEach(v=>{const m=v.f.slice(0,7);if(!byM[m])byM[m]=[];byM[m].push(v);});
+  wrap.innerHTML=Object.entries(byM).sort((a,b)=>b[0].localeCompare(a[0])).map(([m,vs])=>`
+    <div class="month-hdr">${fmtM(m)}</div>
+    ${vs.map(v=>`
+      <div class="hist-item">
+        <div class="hist-top"><span class="hist-caj">${v.c}</span><span class="hist-piezas">${v.t} pzs</span></div>
+        <div class="hist-arts">${v.items.map(it=>`${it.a}: ${it.p}`).join(' · ')}</div>
+        <div class="hist-bot"><span class="hist-date">${fmt(v.f)}</span>
+          <button class="btn btn-red btn-sm" onclick="delV(${v.id})">✕ Eliminar</button>
+        </div>
+      </div>`).join('')}`).join('');
+}
+function delV(id) {
+  if(!confirm('¿Eliminar esta captura?'))return;
+  S.v=S.v.filter(v=>v.id!==id); save(); renderHist(); renderRanking();
+}
+
+// ── ADMIN MODAL ───────────────────────────────────────
+function openAdmin() {
+  renderAdminCaj(); renderArtInputs();
+  document.getElementById('adminModal').classList.add('show');
+}
+function closeAdmin() {
+  document.getElementById('adminModal').classList.remove('show');
+  ['pAdmAct','pAdmNew','pSupAct','pSupNew'].forEach(id=>document.getElementById(id).value='');
+}
+function renderAdminCaj() {
+  const el=document.getElementById('adminCajeras');
+  el.innerHTML=S.caj.length
+    ? S.caj.map(c=>`<span class="tag">${c}<button class="tag-del" onclick="delCaj('${c}')">✕</button></span>`).join('')
+    : '<div style="color:var(--muted);font-size:.8rem">Sin cajeras</div>';
+}
+function addCajera() {
+  const n=document.getElementById('newCajInput').value.trim();
+  if(!n)return;
+  if(S.caj.includes(n)){document.getElementById('addCajMsg').innerHTML='<div class="msg msg-err">Ya existe</div>';return;}
+  S.caj.push(n); save();
+  document.getElementById('newCajInput').value='';
+  document.getElementById('addCajMsg').innerHTML='<div class="msg msg-ok">✓ Cajera agregada</div>';
+  setTimeout(()=>document.getElementById('addCajMsg').innerHTML='',2000);
+  renderAdminCaj(); renderGrid(); fillFiltros();
+}
+function delCaj(name) {
+  if(!confirm(`¿Eliminar a "${name}"?`))return;
+  S.caj=S.caj.filter(c=>c!==name);
+  if(selCaj===name){selCaj=null;document.getElementById('piezasBox').style.display='none';}
+  save(); renderAdminCaj(); renderGrid(); fillFiltros();
+}
+function renderArtInputs() {
+  document.getElementById('artNombres').innerHTML=S.arts.map((a,i)=>`
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+      <span class="pz-num">${i+1}</span>
+      <input type="text" id="art${i}" value="${a}" style="flex:1">
+    </div>`).join('');
+}
+function saveArts() {
+  S.arts=S.arts.map((_,i)=>{
+    const v=document.getElementById(`art${i}`).value.trim();
+    return v||`Artículo ${i+1}`;
+  });
+  save();
+  document.getElementById('artMsg').innerHTML='<div class="msg msg-ok">✓ Nombres guardados</div>';
+  setTimeout(()=>document.getElementById('artMsg').innerHTML='',2000);
+  fillRkProductos();
+  if(selCaj) buildPiezas();
+}
+function changePass(r) {
+  const actEl=document.getElementById(r==='admin'?'pAdmAct':'pSupAct');
+  const newEl=document.getElementById(r==='admin'?'pAdmNew':'pSupNew');
+  const msgEl=document.getElementById(r==='admin'?'msgPAdm':'msgPSup');
+  if(actEl.value!==S.pw[r]){msgEl.innerHTML='<div class="msg msg-err">Contraseña actual incorrecta</div>';return;}
+  if(!newEl.value){msgEl.innerHTML='<div class="msg msg-err">La nueva no puede estar vacía</div>';return;}
+  S.pw[r]=newEl.value; save();
+  actEl.value=''; newEl.value='';
+  msgEl.innerHTML='<div class="msg msg-ok">✓ Contraseña actualizada</div>';
+  setTimeout(()=>msgEl.innerHTML='',3000);
+}
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    self.addEventListener('install', e => self.skipWaiting());
+    self.addEventListener('activate', e => self.clients.claim());
+    self.addEventListener('fetch', e => e.respondWith(fetch(e.request).catch(() => caches.match(e.request))));
+  `;
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(()=>{});
+}
+</script>
+</body>
+</html>
